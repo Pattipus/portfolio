@@ -1,32 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <webapp-header id="head" />
+    <v-img id="bgimg" src="./assets/background.jpg"></v-img>
+    <router-view id="view"></router-view>
+    <webapp-footer id="foot" />
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import header from './components/header.vue'
+import footer from './components/footer.vue'
 
-#nav {
-  padding: 30px;
+export default {
+  name: 'App',
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  components: {
+    'webapp-header':header,
+    'webapp-footer': footer,
+  },
 
-    &.router-link-exact-active {
-      color: #42b983;
+  data(){
+    return{
+
     }
   }
-}
+};
+</script>
+
+<style lang="scss" scoped>
+
+  #bgimg{
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    height: 100vh;
+  }
+
+  #head, #foot, #view{
+    z-index: 2;
+  }
+
 </style>
